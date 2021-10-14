@@ -16,13 +16,29 @@ class PagesController < ApplicationController
   end
 
   def check_number
-    input = params["number"].to_i
-    if input == 12
+    correct_guess = 12
+    input = params[:number].to_i
+    if input == correct_guess
       render json: {message: "Correct!"}
-    elsif input < 12
+    elsif input < correct_guess
       render json: {message: "Aim higher."}
-    elsif input > 12
+    elsif input > correct_guess
       render json: {message: "Aim lower."}
+    end
+  end
+
+  def add
+    total = params[:num1].to_i + params[:num2].to_i
+    render json: {message: "This is your total: #{total}"}
+  end
+
+  def check_credentials
+    username_entry = params[:username]
+    password_entry = params[:password]
+    if username_entry == "hugh" && password_entry == "swordfish"
+      render json: {message: "Valid credentials."}
+    else
+      render json: {message: "Invalid credentials."}
     end
   end
 
