@@ -1,1 +1,5 @@
 GET http://localhost:3000/my_name.json
+###
+GET http://localhost:3000/first_letter.json?name=Abe
+###
+GET http://localhost:3000/guess_number.json?number=10
